@@ -1,11 +1,12 @@
 import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
+import Logo from "../components/Logo";
 
 // ---------- Chat Demo Component (unchanged, same as before) ----------
 const SCRIPT = [
   { from: "user", text: "Hi! Do you have eggless cakes?" },
-  { from: "bot", text: "Yes 🎂 All our cakes can be made eggless on request — same price." },
+  { from: "bot", text: "Yes  All our cakes can be made eggless on request — same price." },
   { from: "user", text: "What time do you close today?" },
   { from: "bot", text: "We're open till 9:30 PM today. Last order for fresh cakes is 8:30 PM." },
   { from: "user", text: "Can I customize one for tomorrow?" },
@@ -189,9 +190,11 @@ export default function LandingPage() {
         {/* Navigation */}
         <nav className="fixed top-0 left-0 right-0 z-50 bg-[#050816]/80 backdrop-blur-md border-b border-white/10 px-6 py-4">
           <div className="max-w-7xl mx-auto flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-xl bg-gradient-to-r from-brand-purple to-brand-blue flex items-center justify-center text-white font-bold text-sm">V</div>
-              <span className="font-bold text-xl bg-gradient-to-r from-brand-purple to-brand-blue bg-clip-text text-transparent">Vorthix</span>
+          <div className="flex items-center">
+              <Link to="/" className="flex items-center gap-2">
+                <Logo />
+              </Link>
+              <span className="font-bold text-xl bg-gradient-to-r from-brand-purple to-brand-blue bg-clip-text text-transparent">orthix</span>
             </div>
             <div className="hidden sm:flex items-center gap-8 text-sm text-gray-400 font-medium">
               <a href="#how" className="hover:text-purple-400 transition-colors">How it works</a>
@@ -395,9 +398,13 @@ export default function LandingPage() {
 
         {/* Footer */}
         <footer className="py-10 px-6 border-t border-white/10 text-center">
-          <div className="flex items-center justify-center gap-2 mb-3">
-            <div className="w-7 h-7 rounded-lg bg-gradient-to-r from-brand-purple to-brand-blue flex items-center justify-center text-white font-bold text-xs">V</div>
-            <span className="font-bold text-lg bg-gradient-to-r from-brand-purple to-brand-blue bg-clip-text text-transparent">Vorthix</span>
+            <div className="flex items-center justify-center  mb-3">
+         
+              <Link to="/" className="flex items-center gap-2">
+                <Logo />
+              </Link>
+              <span className="font-bold text-xl bg-gradient-to-r from-brand-purple to-brand-blue bg-clip-text text-transparent">orthix</span>
+       
           </div>
           <p className="text-sm text-gray-500">© 2026 Vorthix. Made for small businesses, big conversations.</p>
         </footer>
