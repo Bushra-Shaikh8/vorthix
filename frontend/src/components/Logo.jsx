@@ -5,7 +5,7 @@ export default function Logo({ height = 32 }) {
   return (
     <Link to="/" className="flex items-center gap-2 no-underline">
       <img
-        src="public/vorthix-logo.jpeg"       // 👈 your file name here
+        src="/vorthix-logo.jpeg"       // 👈 your file name here
         alt="Vorthix"
         style={{ height: `${height}px`, width: "auto" }}
         className="object-contain"
