@@ -3,6 +3,7 @@ import ChatMessage from "./ChatMessage";
 import TypingIndicator from "./TypingIndicator";
 import ChatInput from "./ChatInput";
 import { useChat } from "../../hooks/useChat";
+import Logo from "../Logo"; //  Import the Logo component
 
 export default function ChatWidget({
   businessSlug,
@@ -10,7 +11,7 @@ export default function ChatWidget({
   primaryColor = "#6C3BD4",
   userMessageColor = "#6C3BD4",
   botMessageColor = "#1B98D6",
-    logoUrl = "",   
+  logoUrl = "",
 }) {
   const { messages, isTyping, sendMessage } = useChat(businessSlug, businessName);
   const bottomRef = useRef(null);
@@ -26,7 +27,7 @@ export default function ChatWidget({
         className="text-white px-4 py-3 flex items-center gap-3"
         style={{ background: `linear-gradient(135deg, ${primaryColor}, ${botMessageColor})` }}
       >
-        {/* Show logo if available, else fallback emoji */}
+        {/* Show custom logo if available, otherwise show Vorthix logo */}
         {logoUrl ? (
           <img
             src={logoUrl}
@@ -35,9 +36,7 @@ export default function ChatWidget({
             onError={(e) => { e.target.style.display = "none"; }}
           />
         ) : (
-          <div className="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center text-lg">
-            🏪
-          </div>
+          <Logo height={24} />   // ✅ Vorthix logo instead of 🏪
         )}
         <div className="flex-1">
           <h2 className="font-bold text-sm">{businessName || "Business"}</h2>
