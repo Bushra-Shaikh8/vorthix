@@ -7,6 +7,7 @@ import StepProfile from "../components/admin/StepProfile";
 import StepCustomize from "../components/admin/StepCustomize";
 import StepTrain from "../components/admin/StepTrain";
 import StepLaunch from "../components/admin/StepLaunch";
+import Logo from "../components/Logo";
 
 export default function AdminPage() {
   const [step, setStep] = useState(0);
@@ -29,19 +30,6 @@ export default function AdminPage() {
   // FAQ
   const [faqText, setFaqText] = useState("");
   const [logoUrl, setLogoUrl] = useState(localStorage.getItem("vorthix_logo") || "");
-
-  // New Business Handler
-  const handleNewBusiness = () => {
-    if (window.confirm("This will clear all current business data. Start fresh?")) {
-      localStorage.removeItem("vorthix_slug");
-      localStorage.removeItem("vorthix_name");
-      localStorage.removeItem("vorthix_primary");
-      localStorage.removeItem("vorthix_userMsg");
-      localStorage.removeItem("vorthix_botMsg");
-      localStorage.removeItem("vorthix_logo");
-      window.location.reload();
-    }
-  };
 
   const handleProfileChange = (field, value) => setProfile((p) => ({ ...p, [field]: value }));
 
@@ -100,41 +88,28 @@ export default function AdminPage() {
         <nav className="bg-[#050816]/80 backdrop-blur-md border-b border-white/10 px-6 py-4">
           <div className="max-w-7xl mx-auto flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <Link
-                to="/"
-                className="flex items-center gap-1 text-gray-400 hover:text-purple-400 transition-colors text-sm"
-              >
-                <i className="fas fa-arrow-left" />
-                <span className="hidden sm:inline">Back to Home</span>
-              </Link>
-              <div className="w-px h-5 bg-white/10 hidden sm:block" />
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-xl bg-gradient-to-r from-brand-purple to-brand-blue flex items-center justify-center text-white font-bold text-sm">V</div>
+              {/* Logo + Brand Name – home page link */}
+              <Link to="/" className="flex items-center">
+                <Logo />
                 <span className="font-bold text-xl bg-gradient-to-r from-brand-purple to-brand-blue bg-clip-text text-transparent">
-                  Vorthix Admin
+                  orthix
                 </span>
-              </div>
+              </Link>
             </div>
 
+            {/* Right side – only business badge (no "New Business" button) */}
             <div className="flex items-center gap-3">
               {businessCreated && (
                 <span className="text-xs bg-purple-400/10 border border-purple-400/30 text-purple-300 px-3 py-1 rounded-full">
                   {chatbotName}
                 </span>
               )}
-              <button
-                onClick={handleNewBusiness}
-                className="text-xs text-gray-400 hover:text-white font-medium px-3 py-1.5 rounded-lg border border-white/10 hover:border-purple-400/30 transition-all"
-              >
-                <i className="fas fa-plus mr-1" />
-                New Business
-              </button>
             </div>
           </div>
         </nav>
 
         <div className="max-w-5xl mx-auto px-4 py-8 md:py-12">
-          {/* Step Indicator with enhanced styling */}
+          {/* Step Indicator */}
           <div className="mb-10">
             <StepIndicator currentStep={step} />
           </div>
