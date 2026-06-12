@@ -34,7 +34,7 @@ export default function ChatInput({ onSend, disabled, primaryColor = "#6C3BD4" }
           value={text}
           onChange={(e) => setText(e.target.value)}
           onKeyDown={handleKeyDown}
-          placeholder="Apna sawaal yahan likhein..."
+          placeholder="Write your question here..."
           disabled={disabled}
           rows={1}
           className="flex-1 bg-transparent text-sm text-gray-800 placeholder-gray-400 resize-none outline-none leading-relaxed max-h-[120px] py-1 disabled:opacity-50"
